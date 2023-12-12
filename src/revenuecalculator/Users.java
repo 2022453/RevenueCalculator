@@ -25,6 +25,7 @@ public class Users {
     
     
     
+    //constructor
     public Users(String first_name, String surname_name, String day_of_birthday, String address, double gross_income, String UserName, String Password) {
         this.first_name = first_name;
         this.surname_name = surname_name;
@@ -40,6 +41,7 @@ public class Users {
       
     }
 
+    //constructor
     public Users(int userID, String first_name, String surname_name, String day_of_birthday, String UserName) {
         this.userID = userID;
         this.first_name = first_name;
@@ -48,6 +50,7 @@ public class Users {
         this.UserName = UserName;
     }
 
+    //constructor
     public Users(int userID, String first_name, String surname_name, double gross_income) {
         this.userID = userID;
         this.first_name = first_name;
@@ -57,6 +60,7 @@ public class Users {
     
     
     
+    //constructor
      public Users(int userID, String first_name, String surname_name, String day_of_birthday, String UserName, String Password) {
         this.userID = userID;
         this.first_name = first_name;
