@@ -392,8 +392,15 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
         default:
             System.out.println("Invalid option. Please try again.");
     }
-}
-                            case 2:
+                }
+          } else {
+                System.out.println("Login failed. Incorrect username or password. Please try again.");
+            }
+        }
+    }
+    break;
+ 
+    case 2:
    
     // instance of Users
     Users newUser = new Users("", "", "", "", 0.0, "", "");
@@ -474,13 +481,21 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
         // Close the scanner
         myKB.close();
     }
+    
 
-        
-   
+    private static boolean containsDigit(String s) {
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static boolean isValidYearMonthDayFormat(String date) {
     // The regular expression for YYYY/MM/DD format
     String regex = "^(\\d{4})[-/](0[1-9]|1[0-2])[-/](0[1-9]|[12][0-9]|3[01])$";
     return date.matches(regex); 
-    
-    }
-}
+  
+     } 
+   }
