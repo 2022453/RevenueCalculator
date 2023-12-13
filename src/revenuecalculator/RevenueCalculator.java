@@ -242,6 +242,25 @@ case 4:
         }
     }
     break;
+    
+     } else {
+            // If not admin, check regular user credentials
+            DatabaseReader dbReader = new DatabaseReader();
+            // Retrieve user from the database by username
+            Users user = dbReader.getUserByUsername(enteredUserName);
+
+            // Check if the user exists and if the entered password matches
+            if (user != null && user.getPassword().equals(enteredPassword)) {
+                System.out.println("Regular user login successful!");
+                loginSuccessful = true;
+                
+                UserActivityLogger.logActivity(enteredUserName, "User logged in");
+             
+                boolean userLoggedIn = true;
+            }
+        
+        }
+ 
 
 
         
