@@ -4,6 +4,7 @@
  */
 package revenuecalculator;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,7 @@ public class RevenueCalculator {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
 
             Scanner myKB = new Scanner(System.in);
@@ -82,4 +83,82 @@ boolean adminLoginSuccessful = false;
         System.out.print("Enter password: ");
         String enteredAdminPassword = myKB.next().trim();
         
+            // Check if entered credentials match admin credentials
+        if (enteredAdminUserName.equals(adminUserName) && enteredAdminPassword.equals(adminPassword)) {
+            System.out.println("Admin login successful!");
+            adminLoginSuccessful = true;
+
+            // Admin- menu 
+            while (true) {
+                System.out.println("Admin Menu:");
+                System.out.println("1. Modify Admin Information");
+                System.out.println("2. see list");
+                System.out.println("3. Remove User");
+                System.out.println("4. Track User Activity");
+                System.out.println("5. Exit Admin Menu");
+
+                int adminChoice = myKB.nextInt();
+
+                switch (adminChoice) {
+                    case 1:
+                            DatabaseReader dbReader = new DatabaseReader();
+    Users adminUser = dbReader.getUserByUsername(adminUserName);
+
+    if (adminUser != null) {
+        // Display current admin information
+        System.out.println("Current Admin Information:");
+        System.out.println("1. First Name: " + adminUser.getFirst_name());
+        System.out.println("2. Surname: " + adminUser.getSurname_name());
+        System.out.println("3. Day of Birth: " + adminUser.getDay_of_birthday());
+        // Add more fields as needed
+
+        // Allow the admin to choose which information to modify
+        System.out.print("Enter the number corresponding to the field to modify: ");
+        int fieldChoice = myKB.nextInt();
+
+        myKB.nextLine(); 
+
+        // Variable to store the new value
+        String newValue;
+
+        switch (fieldChoice) {
+            case 1:
+                // Modify First Name
+                System.out.print("Enter the new First Name: ");
+                newValue = myKB.nextLine().trim();
+                adminUser.setFirst_name(newValue);
+                break;
+
+            case 2:
+                // Modify Surname
+                System.out.print("Enter the new Surname: ");
+                newValue = myKB.nextLine().trim();
+                adminUser.setSurname_name(newValue);
+                break;
+
+            case 3:
+                // Modify Day of Birth
+                System.out.print("Enter the new Day of Birth (YYYY-MM-DD): ");
+                newValue = myKB.nextLine().trim();
+                if (isValidYearMonthDayFormat(newValue)) {
+                    adminUser.setDay_of_birthday(newValue);
+                } else {
+                    System.out.println("Invalid date format. Modification canceled.");
+                }
+                break;
+
+            // Add more cases for other fields as needed
+
+            default:
+                System.out.println("Invalid choice. Modification canceled.");
+                break;
+        }
+        
+   
+    private static boolean isValidYearMonthDayFormat(String date) {
+    // The regular expression for YYYY/MM/DD format
+    String regex = "^(\\d{4})[-/](0[1-9]|1[0-2])[-/](0[1-9]|[12][0-9]|3[01])$";
+    return date.matches(regex); 
     
+    }
+}
