@@ -5,6 +5,7 @@
 package revenuecalculator;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -153,6 +154,42 @@ boolean adminLoginSuccessful = false;
                 System.out.println("Invalid choice. Modification canceled.");
                 break;
         }
+          // Update the modified information in the database
+        DatabaseWriter dbWriter = new DatabaseWriter();
+        if (dbWriter.updateUserAdmin(adminUser)) {
+            System.out.println("Admin information updated successfully!");
+        } else {
+            System.out.println("Failed to update admin information.");
+        }
+    } else {
+        System.out.println("Admin not found in the database. Cannot modify information.");
+    }
+    break;
+    
+                        case 2:
+                            System.out.println("see list");
+                     try {
+          
+            DatabaseReader dbReader1 = new DatabaseReader();
+            ArrayList<Users> usersList = dbReader1.getAllData();
+
+           // retrieve all the information.
+            for (Users user : usersList) {
+                System.out.println("User ID: " + user.getUserID());
+                System.out.println("First Name: " + user.getFirst_name());
+                System.out.println("Surname: " + user.getSurname_name());
+                System.out.println("Date of Birth: " + user.getDay_of_birthday());
+                System.out.println("Username: " + user.getUserName());
+                System.out.println("--------------");
+            }
+
+        } catch (SQLException e) {
+          // Handle the exception as needed
+          
+        }
+                     break;
+
+
         
    
     private static boolean isValidYearMonthDayFormat(String date) {
