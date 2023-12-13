@@ -188,6 +188,60 @@ boolean adminLoginSuccessful = false;
           
         }
                      break;
+                     
+                                        case 3:
+    // Remove User
+    System.out.print("Enter the username of the user to be removed: ");
+    String usernameToRemove = myKB.next().trim();
+
+    DatabaseWriter dbWriter = new DatabaseWriter();
+    boolean removalSuccessful = dbWriter.removeUser(usernameToRemove);
+
+    if (removalSuccessful) {
+        System.out.println("User removed successfully!");
+    } else {
+        System.out.println("Failed to remove the user. User not found or an error occurred.");
+    }
+    break;
+
+case 4:
+    // Track User Activity
+    System.out.print("Enter the username of the user to track activity: ");
+    String usernameToTrack = myKB.next().trim();
+
+    // Retrieve and display the user activity log
+    ArrayList<String> activityLog = UserActivityLogger.getUserActivityLog(usernameToTrack);
+
+    if (activityLog.isEmpty()) {
+        System.out.println("No activity found for user " + usernameToTrack);
+    } else {
+        System.out.println("User Activity Log for " + usernameToTrack + ":");
+        for (String activity : activityLog) {
+            System.out.println(activity);
+        }
+    }
+    
+                        break;
+
+                    case 5:
+                        // Exit Admin Menu
+                        System.out.println("Exiting Admin Menu.");
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice. Please enter a valid option.");
+                        break;
+                }
+
+                if (adminChoice == 4) {
+                    break; // Exit the admin menu
+                }
+            }
+        } else {
+            System.out.println("Admin login failed. Incorrect username or password. Please try again.");
+        }
+    }
+    break;
 
 
         
