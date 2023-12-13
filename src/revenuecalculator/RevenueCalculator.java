@@ -257,10 +257,79 @@ case 4:
                 UserActivityLogger.logActivity(enteredUserName, "User logged in");
              
                 boolean userLoggedIn = true;
-            }
+            
+                while (userLoggedIn) {
+    System.out.println("Options for regular user:");
+    System.out.println("1 - Modify Your Information");
+    System.out.println("2 - Perform Income Calculation and save!");
+    System.out.println("3 - Check results");
+    System.out.println("4 - Logout");
+
+    int userOption = myKB.nextInt();
+
+    switch (userOption) {
+        case 1:
+            // Modify Your Information
+            System.out.println("Options for modifying information:");
+            System.out.println("1 - Modify First Name");
+            System.out.println("2 - Modify Surname");
+            System.out.println("3 - Modify Day of Birth");
+            System.out.println("4 - Modify Address");
+            System.out.println("5 - Modify Gross Income");
+            System.out.println("6 - Modify Username");
+            System.out.println("7 - Modify Password");
+
+            int modificationOption = myKB.nextInt();
+            myKB.nextLine(); // Consume the newline character
+
+            switch (modificationOption) {
+                case 1:
+                    System.out.print("Enter new first name: ");
+                    user.setFirst_name(myKB.nextLine().trim());
+                    break;
+                case 2:
+                    System.out.print("Enter new surname: ");
+                    user.setSurname_name(myKB.nextLine().trim());
+                    break;
+                case 3:
+                    System.out.print("Enter new day of birth (YYYY-MM-DD): ");
+                    user.setDay_of_birthday(myKB.nextLine().trim());
+                    break;
+                case 4:
+                    System.out.print("Enter new address: ");
+                    user.setAddress(myKB.nextLine().trim());
+                    break;
+                case 5:
+                    System.out.print("Enter new gross income: ");
+                    double newIncome = myKB.nextDouble();
+                    user.setGross_income(newIncome);
+                    break;
+                case 6:
+                    System.out.print("Enter new username: ");
+                    user.setUserName(myKB.nextLine().trim());
+                    break;
+                case 7:
+                    System.out.print("Enter new password: ");
+                    user.setPassword(myKB.nextLine().trim());
+                    break;
+                default:
+                    System.out.println("Invalid modification option.");
+                 }
+
+        // Update the modified information in the database
+        DatabaseWriter dbWriter1 = new DatabaseWriter();
+        if (dbWriter1.updateUser(user)) {
+            System.out.println("user information updated successfully!");
+          
+// Log the activity
+UserActivityLogger.logActivity(enteredUserName, "Modified user information");
+
+        } else {
+            System.out.println("Failed to update user information.");
         
-        }
- 
+    }
+    break;
+    
 
 
         
