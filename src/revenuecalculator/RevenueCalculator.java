@@ -362,7 +362,37 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
     }
     break;
 
+ case 3:
+    try {
+        // Retrieve user information from the database
+        Users user2 = dbReader.getUserByUsername(enteredUserName);
 
+        // Retrieve results from the new table
+        UserData userData = dbReader.getUserDataByUserID(user.getUserID());
+
+        // Print the user data
+        System.out.println("User ID: " + userData.getUserID());
+        System.out.println("First Name: " + userData.getFirst_name());
+        System.out.println("Surname: " + userData.getSurname_name());
+        System.out.println("Gross Income: " + userData.getGross_income());
+        System.out.println("Tax Credits: " + userData.getTax_credits());
+        System.out.println("Tax Owned: " + userData.getTax_owned());
+
+    } catch (SQLException e) {
+        System.out.println("Error retrieving user information or results from the database: " + e.getMessage());
+    }
+    break;
+
+        case 4:
+            // Logout
+            userLoggedIn = false;
+            System.out.println("User logged out.");
+            break;
+
+        default:
+            System.out.println("Invalid option. Please try again.");
+    }
+}
         
    
     private static boolean isValidYearMonthDayFormat(String date) {
