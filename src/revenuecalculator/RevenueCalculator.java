@@ -393,6 +393,88 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
             System.out.println("Invalid option. Please try again.");
     }
 }
+                            case 2:
+   
+    // instance of Users
+    Users newUser = new Users("", "", "", "", 0.0, "", "");
+
+    // Input validation loop for first name
+    while (newUser.getFirst_name().isEmpty() || containsDigit(newUser.getFirst_name())) {
+        System.out.print("Please enter your first name (without numbers): ");
+        newUser.setFirst_name(myKB.nextLine().trim());
+        if (containsDigit(newUser.getFirst_name())) {
+            System.out.println("Invalid input. Please enter a name without numbers.");
+        }
+    }
+
+    // Input validation loop for surname
+    while (newUser.getSurname_name().isEmpty() || containsDigit(newUser.getSurname_name())) {
+        System.out.print("Please enter your surname (without numbers): ");
+        newUser.setSurname_name(myKB.nextLine().trim());
+        if (containsDigit(newUser.getSurname_name())) {
+            System.out.println("Invalid input. Please enter a surname without numbers.");
+        }
+    }
+
+    // Input validation loop for day of birth
+    while (newUser.getDay_of_birthday().isEmpty() || !isValidYearMonthDayFormat(newUser.getDay_of_birthday())) {
+        System.out.print("Please enter your day of birth (YYYY-MM-DD): ");
+        newUser.setDay_of_birthday(myKB.nextLine().trim());
+        if (!isValidYearMonthDayFormat(newUser.getDay_of_birthday())) {
+            System.out.println("Invalid date format. Please enter a valid date in YYYY/MM/DD format.");
+        }
+    }
+
+    // Input validation loop for address
+    while (newUser.getAddress().isEmpty()) {
+        System.out.print("Please enter your address: ");
+        newUser.setAddress(myKB.nextLine().trim());
+    }
+
+    // Input validation loop for gross income
+    boolean validIncome = false;
+    while (!validIncome) {
+        System.out.print("Please enter your gross income: ");
+        try {
+            newUser.setGross_income(Double.parseDouble(myKB.nextLine()));
+            validIncome = true;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+    }
+    
+        while (newUser.getUserName().isEmpty()) {
+        System.out.print("Please enter your Username: ");
+        newUser.setUserName(myKB.nextLine().trim());
+    }
+        
+        
+    while (newUser.getPassword().isEmpty()) {
+        System.out.print("Please enter your password: ");
+        newUser.setPassword(myKB.nextLine().trim());
+    }
+        
+        
+    
+       DatabaseWriter dbWriter = new DatabaseWriter();
+    if (dbWriter.addUser(newUser)) {
+        System.out.println("User added to the database successfully!");
+        
+        
+    } else {
+        System.out.println("Failed to add user to the database.");
+    }
+    break;
+
+
+            default:
+                System.out.println("Invalid choice.");
+        }
+
+        // Close the scanner
+        myKB.close();
+    }
+
         
    
     private static boolean isValidYearMonthDayFormat(String date) {
