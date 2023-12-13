@@ -7,6 +7,7 @@ package revenuecalculator;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import static revenuecalculator.DatabaseReader.getIncomeFromDatabase;
 
 /**
  *
@@ -330,6 +331,36 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
     }
     break;
     
+    case 2:
+        
+    try {
+        
+    
+        double income = getIncomeFromDatabase(enteredUserName);
+
+        // Example usage of the TaxCalculator interface and IrishTaxCalculator implementation
+        TaxCalculator taxCalculator = new IrishTaxCalculator();
+
+        // Calculate income tax considering tax credit
+        double tax = taxCalculator.calculateIncomeTax(income);
+        
+             // Create a new UserData object with the calculated values
+        UserData userData = new UserData(3550, tax, user.getUserID(), user.getFirst_name(), user.getSurname_name(), income);
+//         Retrieve income from the database (replace "enteredUserName" with the actual username)
+
+            DatabaseWriter dbWriter = new DatabaseWriter();
+            if (dbWriter.addResults(userData)) {
+                System.out.println("User information updated successfully!");
+            } else {
+                System.out.println("Failed to update user information.");
+            }
+
+        // Display the result
+        System.out.println("Your income tax after tax credit is: €" + tax);
+    } catch (SQLException e) {
+        System.out.println("Error retrieving income from the database: " + e.getMessage());
+    }
+    break;
 
 
         
