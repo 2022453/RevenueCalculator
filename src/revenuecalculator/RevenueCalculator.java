@@ -4,10 +4,8 @@
  */
 package revenuecalculator;
 
-<<<<<<< HEAD
+
 import java.sql.SQLException;
-=======
->>>>>>> 2a1974af45d4a4eba7bcf5849ca19502d445b996
 import java.util.ArrayList;
 import java.util.Scanner;
 import static revenuecalculator.DatabaseReader.getIncomeFromDatabase;
@@ -20,11 +18,9 @@ public class RevenueCalculator {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
-<<<<<<< HEAD
-=======
 
->>>>>>> 2a1974af45d4a4eba7bcf5849ca19502d445b996
     public static void main(String[] args) throws SQLException {
         
 
@@ -101,15 +97,15 @@ boolean adminLoginSuccessful = false;
             while (true) {
                 System.out.println("Admin Menu:");
                 System.out.println("1. Modify Admin Information");
-<<<<<<< HEAD
+
                 System.out.println("2. see list");
                 System.out.println("3. Remove User");
                 System.out.println("4. Track User Activity");
-=======
+
                 System.out.println("2. See list of Users");
                 System.out.println("3. Remove Users");
                 System.out.println("4. Track User's Activity");
->>>>>>> 2a1974af45d4a4eba7bcf5849ca19502d445b996
+
                 System.out.println("5. Exit Admin Menu");
 
                 int adminChoice = myKB.nextInt();
@@ -496,10 +492,8 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
     }
     
 
-<<<<<<< HEAD
-=======
     // to check if contains number when users is signing up his name and surname
->>>>>>> 2a1974af45d4a4eba7bcf5849ca19502d445b996
+
     private static boolean containsDigit(String s) {
         for (char c : s.toCharArray()) {
             if (Character.isDigit(c)) {
@@ -515,8 +509,4 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
     return date.matches(regex); 
   
      } 
-<<<<<<< HEAD
-   }
-=======
-   }
->>>>>>> 2a1974af45d4a4eba7bcf5849ca19502d445b996
+}
