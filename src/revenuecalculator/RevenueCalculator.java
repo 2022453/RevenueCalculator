@@ -94,9 +94,9 @@ boolean adminLoginSuccessful = false;
             while (true) {
                 System.out.println("Admin Menu:");
                 System.out.println("1. Modify Admin Information");
-                System.out.println("2. see list");
-                System.out.println("3. Remove User");
-                System.out.println("4. Track User Activity");
+                System.out.println("2. See list of Users");
+                System.out.println("3. Remove Users");
+                System.out.println("4. Track User's Activity");
                 System.out.println("5. Exit Admin Menu");
 
                 int adminChoice = myKB.nextInt();
@@ -483,6 +483,7 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
     }
     
 
+    // to check if contains number when users is signing up his name and surname
     private static boolean containsDigit(String s) {
         for (char c : s.toCharArray()) {
             if (Character.isDigit(c)) {
