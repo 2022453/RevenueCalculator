@@ -4,7 +4,6 @@
  */
 package revenuecalculator;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import static revenuecalculator.DatabaseReader.getIncomeFromDatabase;
@@ -18,6 +17,7 @@ public class RevenueCalculator {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) throws SQLException {
         
 
