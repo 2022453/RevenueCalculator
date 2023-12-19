@@ -1,0 +1,8 @@
+[2023-12-13 14:47:36] User 'diogo': User logged in
+[2023-12-19 17:58:02] User 'denis': User logged in
+[2023-12-19 18:45:44] User 'denis': User logged in
+[2023-12-19 18:49:30] User 'denis': User logged in
+[2023-12-19 19:58:17] User 'denis': User logged in
+[2023-12-19 20:12:36] User 'denis': User logged in
+[2023-12-19 21:16:42] User 'Ju': User logged in
+[2023-12-19 22:00:05] User 'DENIS': User logged in
