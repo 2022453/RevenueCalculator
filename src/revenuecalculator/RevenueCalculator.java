@@ -4,14 +4,13 @@
  */
 package revenuecalculator;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 2cf2f151340267e2187627df7cf2bd92485829d0
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import static revenuecalculator.DatabaseReader.getIncomeFromDatabase;
+
+import java.util.Scanner;
 
 /**
  *
@@ -495,10 +494,7 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
     }
     
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 2cf2f151340267e2187627df7cf2bd92485829d0
     // to check if contains number when users is signing up his name and surname
 
     private static boolean containsDigit(String s) {
@@ -515,9 +511,6 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
     String regex = "^(\\d{4})[-/](0[1-9]|1[0-2])[-/](0[1-9]|[12][0-9]|3[01])$";
     return date.matches(regex); 
   
-<<<<<<< HEAD
-     } 
-=======
     }
->>>>>>> 2cf2f151340267e2187627df7cf2bd92485829d0
+    
 }
