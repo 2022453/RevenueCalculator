@@ -99,15 +99,9 @@ boolean adminLoginSuccessful = false;
             while (true) {
                 System.out.println("Admin Menu:");
                 System.out.println("1. Modify Admin Information");
-
-                System.out.println("2. see list");
-                System.out.println("3. Remove User");
-                System.out.println("4. Track User Activity");
-
                 System.out.println("2. See list of Users");
                 System.out.println("3. Remove Users");
                 System.out.println("4. Track User's Activity");
-
                 System.out.println("5. Exit Admin Menu");
 
                 int adminChoice = myKB.nextInt();
@@ -179,7 +173,7 @@ boolean adminLoginSuccessful = false;
     break;
     
                         case 2:
-                            System.out.println("see list");
+                            System.out.println("List:");
                      try {
           
             DatabaseReader dbReader1 = new DatabaseReader();
@@ -245,7 +239,7 @@ case 4:
                         break;
                 }
 
-                if (adminChoice == 4) {
+                if (adminChoice == 5) {
                     break; // Exit the admin menu
                 }
             }
@@ -298,27 +292,37 @@ case 4:
                 case 1:
                     System.out.print("Enter new first name: ");
                     user.setFirst_name(myKB.nextLine().trim());
+                    UserActivityLogger.logActivity(enteredUserName, "Name was modified");
+
                     break;
                 case 2:
                     System.out.print("Enter new surname: ");
                     user.setSurname_name(myKB.nextLine().trim());
+                    UserActivityLogger.logActivity(enteredUserName, "Surname was modified");
+
                     break;
                 case 3:
                     System.out.print("Enter new day of birth (YYYY-MM-DD): ");
                     user.setDay_of_birthday(myKB.nextLine().trim());
+                    UserActivityLogger.logActivity(enteredUserName, "Day of birth was altered");
                     break;
                 case 4:
                     System.out.print("Enter new address: ");
                     user.setAddress(myKB.nextLine().trim());
+                    UserActivityLogger.logActivity(enteredUserName, "New address was added");
+
                     break;
                 case 5:
                     System.out.print("Enter new gross income: ");
                     double newIncome = myKB.nextDouble();
                     user.setGross_income(newIncome);
+                    UserActivityLogger.logActivity(enteredUserName, "New income updated");
                     break;
                 case 6:
                     System.out.print("Enter new username: ");
                     user.setUserName(myKB.nextLine().trim());
+                    UserActivityLogger.logActivity(enteredUserName, "Credential altered");
+
                     break;
                 case 7:
                     System.out.print("Enter new password: ");
@@ -365,6 +369,8 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
             } else {
                 System.out.println("Failed to update user information.");
             }
+            
+            UserActivityLogger.logActivity(enteredUserName, "Calculation was performed");
 
         // Display the result
         System.out.println("Your income tax after tax credit is: €" + tax);
@@ -380,6 +386,8 @@ UserActivityLogger.logActivity(enteredUserName, "Modified user information");
 
         // Retrieve results from the new table
         UserData userData = dbReader.getUserDataByUserID(user.getUserID());
+        
+        UserActivityLogger.logActivity(enteredUserName, "Last Tax Income Result was checked");
 
         // Print the user data
         System.out.println("User ID: " + userData.getUserID());
