@@ -6,3 +6,8 @@
 [2023-12-19 20:12:36] User 'denis': User logged in
 [2023-12-19 21:16:42] User 'Ju': User logged in
 [2023-12-19 22:00:05] User 'DENIS': User logged in
+[2023-12-20 17:07:03] User 'diogo': User logged in
+[2023-12-20 17:08:59] User 'diogo': User logged in
+[2023-12-20 17:09:13] User 'diogo': Modified user information
+[2023-12-20 17:10:53] User 'diogo': User logged in
+[2023-12-20 17:11:52] User 'diogo': Modified user information
