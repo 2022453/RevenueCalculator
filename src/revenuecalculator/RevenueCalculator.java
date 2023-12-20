@@ -4,7 +4,11 @@
  */
 package revenuecalculator;
 
-
+/**
+ * https://github.com/2022453/RevenueCalculator
+ * Diogo Lemos Aguiar 2022206
+*  Paulo Machado 2022453
+* */
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
